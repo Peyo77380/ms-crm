@@ -1,0 +1,3244 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ms-CRM OpenApi Documentation",
+        "description": "ms-CRM OpenApi description",
+        "contact": {
+            "email": "florian@alt.bzh"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1/",
+            "description": "Full ms-CRM API endPoint documentation"
+        }
+    ],
+    "paths": {
+        "/company/{id}": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "get company by id",
+                "description": "Afficher la fiche d'une société",
+                "operationId": "338664ac2f96ec0d3a64676c70a4aeb9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return company object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "no company found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "Update company",
+                "description": "Mise à jour de la fiche d'une société",
+                "operationId": "ef091f3b4f281d3762a0283d19b5ec0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id's company to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CompanyUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return company object updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "Delete company",
+                "description": "Archivage de la fiche d'une société",
+                "operationId": "963a45f9ab5bbef4f7601d48fa76e74d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id's company to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return company object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Company not deleted"
+                    }
+                }
+            }
+        },
+        "/company/withUser/{id}": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "List of all users for one company",
+                "description": "Affichage de tous les utilisateurs reliés à cette compagnie",
+                "operationId": "9a6fa1eecd544ddbe49ea1b7900daeb3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of company",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return company object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No company store"
+                    }
+                }
+            }
+        },
+        "/company/list": {
+            "get": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "Get list of all companies",
+                "description": "Liste de toutes les fiches de sociétés",
+                "operationId": "1e3d5919745b50fcd4d9ff8d784b239a",
+                "responses": {
+                    "200": {
+                        "description": "return company object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No company's list found"
+                    }
+                }
+            }
+        },
+        "/company": {
+            "post": {
+                "tags": [
+                    "company"
+                ],
+                "summary": "Store company",
+                "description": "Création de la fiche d'une société",
+                "operationId": "e4ed87f74ea810e8c76674f6203cc09f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CompanyStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return company object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Company"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No company store"
+                    }
+                }
+            }
+        },
+        "/invoice/{id}": {
+            "get": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "get invoice by id",
+                "description": "Affichage d'une facture avec tous ses détails et ses paiements",
+                "operationId": "f012e390c3e20e3ed826e0df456e39de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Invoice id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "no invoice found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "Update invoice",
+                "description": "Mise à jour d'une facture et création d'un log",
+                "operationId": "d83f229862ef2047c2a32fbcd8fc7357",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoice_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InvoiceUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "Delete invoice",
+                "description": "Archivage d'une facture et création d'un log",
+                "operationId": "5dbdeb82a11f64fb1bf2280bf22f7efa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoice_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice not deleted"
+                    }
+                }
+            }
+        },
+        "/invoice/list": {
+            "get": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "Get list of all invoices",
+                "description": "Liste de toutes les factures",
+                "operationId": "cfbf74348aecd315dfc071d54cd4da3e",
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice list store"
+                    }
+                }
+            }
+        },
+        "/invoice/company/{id}": {
+            "get": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "List of all invoices for one company",
+                "description": "Affichage de toutes les factures d'une société",
+                "operationId": "d459ff5c1b0fbca32872447fc9d44357",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "description": "company_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice store"
+                    }
+                }
+            }
+        },
+        "/invoice/user/{id}": {
+            "get": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "List of all invoices for one user",
+                "description": "Affichage de toutes les factures d'un utilisateur",
+                "operationId": "4623fb34957aff37f4bc18f2f027a655",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice store"
+                    }
+                }
+            }
+        },
+        "/invoice": {
+            "post": {
+                "tags": [
+                    "invoice"
+                ],
+                "summary": "Store invoice",
+                "description": "Création d'une facture avec incrémentation du dernier numéro de facture et création d'un log",
+                "operationId": "11c1f23a2e2a200a768b001922ab292c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InvoiceStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Invoice"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice store"
+                    }
+                }
+            }
+        },
+        "/invoice/detail/{id}": {
+            "get": {
+                "tags": [
+                    "invoiceDetail"
+                ],
+                "summary": "get invoice detail by id",
+                "description": "Affichage d'un détail d'une facture",
+                "operationId": "7efc1d03fa2404395090089da7460cb7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Invoice detail id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice detail found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "invoiceDetail"
+                ],
+                "summary": "Update detail invoice",
+                "description": "Mise à jour d'un détail d'une facture et création d'un log",
+                "operationId": "f3719c4cc8f02f9fe4028965f37be6aa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoiceDetail_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DetailUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice detail not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "invoiceDetail"
+                ],
+                "summary": "Delete invoice detail",
+                "description": "Suppression d'un détail d'une facture et création d'un log",
+                "operationId": "670266c7e45c8670f6b627b1a5206066",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoiceDetail_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice detail not deleted"
+                    }
+                }
+            }
+        },
+        "/invoice/detail": {
+            "post": {
+                "tags": [
+                    "invoiceDetail"
+                ],
+                "summary": "Store invoice detail",
+                "description": "Création d'un détail d'une facture et création d'un log",
+                "operationId": "eb696a98b62c9b2c68d9eb89ca4b75c4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DetailStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoiceDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice detail store"
+                    }
+                }
+            }
+        },
+        "/invoice/payment/{id}": {
+            "get": {
+                "tags": [
+                    "invoicePayment"
+                ],
+                "summary": "get invoice payment by id",
+                "description": "Affichage d'un paiement d'une facture",
+                "operationId": "2d1c3c47d2835a770a53297dab012531",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Invoice payment id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice payment object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoicePayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice payment found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "invoicePayment"
+                ],
+                "summary": "Update payment invoice",
+                "description": "Mise à jour d'un paiement d'une facture et création d'un log",
+                "operationId": "f4c0d41dc5530255c5e36c1e483eba5a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "InvoicePayment_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice payment object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoicePayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice payment not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "invoicePayment"
+                ],
+                "summary": "Delete invoice payment",
+                "description": "Suppression d'un paiement d'une facture et création d'un log",
+                "operationId": "d8f97bac74fe5749d7042649e5dcea54",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoicePayment_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return invoice payment object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoicePayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Invoice payment not deleted"
+                    }
+                }
+            }
+        },
+        "/invoice/payment": {
+            "post": {
+                "tags": [
+                    "invoicePayment"
+                ],
+                "summary": "Store invoice payment",
+                "description": "Création d'un paiement d'une facture et création d'un log",
+                "operationId": "4e4d5e1230f9240cfed69610bbca20b8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PaymentStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return invoice payment object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvoicePayment"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No invoice payment store"
+                    }
+                }
+            }
+        },
+        "/log/{id}": {
+            "get": {
+                "tags": [
+                    "logAccounting"
+                ],
+                "summary": "get log by id",
+                "description": "Affichage d'une action concernant la facturation",
+                "operationId": "4ea08b508c2d1615503fc22fe35a4cd0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "log id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return log Accounting object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LogAccounting"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No log Accounting found"
+                    }
+                }
+            }
+        },
+        "/log/list": {
+            "get": {
+                "tags": [
+                    "logAccounting"
+                ],
+                "summary": "Get list of all logs for Accounting",
+                "description": "Liste de toutes les actions concernant la facturation : création et modification de factures, de devis, chaque détail, etc ...",
+                "operationId": "ca6982e7c6bfffdee64e8c0e6aaff418",
+                "responses": {
+                    "200": {
+                        "description": "return log object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LogAccounting"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "log's list not found"
+                    }
+                }
+            }
+        },
+        "/log/quote/{id}": {
+            "get": {
+                "tags": [
+                    "logAccounting"
+                ],
+                "summary": "List of all logs for one quote",
+                "description": "Affichage de toutes les actions faites sur un devis",
+                "operationId": "8be34dd38cfa3fdc760db3639d7d0f9d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of quote",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return logAccounting object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LogAccounting"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No logAccounting found"
+                    }
+                }
+            }
+        },
+        "/log/invoice/{id}": {
+            "get": {
+                "tags": [
+                    "logAccounting"
+                ],
+                "summary": "List of all logs for one invoice",
+                "description": "Affichage de toutes les actions faites sur une facture",
+                "operationId": "874102d7aece19e85beb68e185e6d1d0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of invoice",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return logAccounting object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LogAccounting"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No logAccounting found"
+                    }
+                }
+            }
+        },
+        "/quote/{id}": {
+            "get": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "get quote by id",
+                "description": "Affichage d'un devis avec tous ses détails et ses paiements",
+                "operationId": "38b55d2d5472609eac06a1e29daf8c80",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quote id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "Update quote",
+                "description": "Mise à jour d'un devis et création d'un log",
+                "operationId": "b7a05f02366fd698df71a1c914cba850",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quote_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuoteUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Quote not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "Delete quote",
+                "description": "Archivage d'un devis et création d'un log",
+                "operationId": "92732bccb1fcb183feb031cdb260cdba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quote_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Quote not deleted"
+                    }
+                }
+            }
+        },
+        "/quote/list": {
+            "get": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "Get list of all quotes",
+                "description": "Liste de toutes les factures",
+                "operationId": "9460331b94ea2199a5adbeb09740b468",
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote list store"
+                    }
+                }
+            }
+        },
+        "/quote/company/{id}": {
+            "get": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "List of all quotes for one company",
+                "description": "Affichage de tous les devis d'une société",
+                "operationId": "e2464811fa0ff13ce30f3db6fc467cdc",
+                "parameters": [
+                    {
+                        "name": "company_id",
+                        "in": "path",
+                        "description": "company_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote found"
+                    }
+                }
+            }
+        },
+        "/quote/user/{id}": {
+            "get": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "List of all quotes for one user",
+                "description": "Affichage de tous les devis d'un utilisateur",
+                "operationId": "11b707dc3aa1114847073398d7864f99",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote found"
+                    }
+                }
+            }
+        },
+        "/quote": {
+            "post": {
+                "tags": [
+                    "quote"
+                ],
+                "summary": "Store quote",
+                "description": "Création d'un devis avec incrémentation du dernier numéro de devis et création d'un log",
+                "operationId": "09f9c042f470cd084ae1cc74ca16fe2b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuoteStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return quote object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quote"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote store"
+                    }
+                }
+            }
+        },
+        "/quote/detail/{id}": {
+            "get": {
+                "tags": [
+                    "quoteDetail"
+                ],
+                "summary": "get quote detail by id",
+                "description": "Affichage d'un détail d'un devis",
+                "operationId": "42f364e21b60fb7b2b85c6daecb3855a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quote detail id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QuoteDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote detail found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "quoteDetail"
+                ],
+                "summary": "Update detail quote",
+                "description": "Mise à jour d'un détail d'un devis et création d'un log",
+                "operationId": "da14dff1ceaa38880fe6c8f2e281b6a8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quoteDetail_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuoteDetailUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return quote detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QuoteDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Quote detail not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "quoteDetail"
+                ],
+                "summary": "Delete quote detail",
+                "description": "Suppression d'un détail d'un devis et création d'un log",
+                "operationId": "fa21dfa55c8362cf3d6bda4f2db9da19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "quoteDetail_id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return quote detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QuoteDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Quote detail not deleted"
+                    }
+                }
+            }
+        },
+        "/quote/detail": {
+            "post": {
+                "tags": [
+                    "quoteDetail"
+                ],
+                "summary": "Store quote detail",
+                "description": "Création d'un détail d'un devis et création d'un log",
+                "operationId": "946a658bcc976a732765dff5d294c38e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuoteDetailStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return quote detail object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/QuoteDetail"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No quote detail store"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "get user by id",
+                "description": "Afficher la fiche d'un utilisateur",
+                "operationId": "184be49ea2b205cb0daf821b82028d26",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return user object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "no user found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Update user",
+                "description": "Mise à jour de la fiche d'un user",
+                "operationId": "db60f1c0ed783c7c7189ec0d72f8a0ae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id's user to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return user object updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Delete user",
+                "description": "Archivage de la fiche d'un user",
+                "operationId": "c3bbcfd30a359ab76a95a40b67b3d502",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id's user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return user object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not deleted"
+                    }
+                }
+            }
+        },
+        "/user/withCompany/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "List of all companies for one user",
+                "description": "Affichage de toutes les compagnies reliées à ce user",
+                "operationId": "1d04bbfd2fb0d61d553857ff43384223",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of user",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return user object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No user store"
+                    }
+                }
+            }
+        },
+        "/user/list": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get list of all users",
+                "description": "Liste de toutes les fiches des users",
+                "operationId": "ec3a8fd6634348990d464a2742c09f6e",
+                "responses": {
+                    "200": {
+                        "description": "return user object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No user's list found"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Store user",
+                "description": "Création de la fiche d'un user",
+                "operationId": "2b009f4102c0cc8c13cfab19f04206ee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserStoreRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return user object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No user store"
+                    }
+                }
+            }
+        },
+        "/money/company/{id}": {
+            "get": {
+                "tags": [
+                    "VirtualMoney"
+                ],
+                "summary": "get sold for Virtual Money of this company",
+                "description": "Affichage du solde du compte virtuel d'une société",
+                "operationId": "67228d6bf83501096bb0397b2ebcc155",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Company id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoney object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoney"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No account found"
+                    }
+                }
+            }
+        },
+        "/money/user/{id}": {
+            "get": {
+                "tags": [
+                    "VirtualMoney"
+                ],
+                "summary": "get sold for Virtual Money of this user",
+                "description": "Affichage du solde du compte virtuel d'un user",
+                "operationId": "e65ff7e7ed137641f69264283fd78d6f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoney object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoney"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No account found"
+                    }
+                }
+            }
+        },
+        "/money/company": {
+            "post": {
+                "tags": [
+                    "VirtualMoney"
+                ],
+                "summary": "Store a Virtual Money Account",
+                "description": "Création d'un compte virtuel pour une société",
+                "operationId": "b1b14799e10b3b869f740e6ae50e4c80",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CountRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoney object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoney"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Account not store"
+                    }
+                }
+            }
+        },
+        "/money/user": {
+            "post": {
+                "tags": [
+                    "VirtualMoney"
+                ],
+                "summary": "Store a Virtual Money Account",
+                "description": "Création d'un compte virtuel pour un user",
+                "operationId": "e100bd94e7c55334abba15686dc21085",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CountRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoney object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoney"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Account not store"
+                    }
+                }
+            }
+        },
+        "/money/exchange/company/{id}": {
+            "get": {
+                "tags": [
+                    "VirtualMoneyExchange"
+                ],
+                "summary": "List of all exchanges for one company",
+                "description": "Affichage de toutes les transactions sur le compte virtuel de cette compagnie",
+                "operationId": "97a8b471e1f3c683852866ff87b208ab",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "company id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoneyExchange object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoneyExchange"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No exchange found"
+                    }
+                }
+            }
+        },
+        "/money/exchange/user/{id}": {
+            "get": {
+                "tags": [
+                    "VirtualMoneyExchange"
+                ],
+                "summary": "List of all exchanges for one user",
+                "description": "Affichage de toutes les transactions sur le compte virtuel de cet utilisateur",
+                "operationId": "86c71518932e38c1bcecd5e9ca9baa08",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoneyExchange object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoneyExchange"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No exchange found"
+                    }
+                }
+            }
+        },
+        "/money/exchange/list": {
+            "get": {
+                "tags": [
+                    "VirtualMoneyExchange"
+                ],
+                "summary": "Store a Virtual Money Exchange",
+                "description": "Affichage de toutes les transactions en monnaie virtuelle passées",
+                "operationId": "c858be65f138d383e30ccc0689ba8e77",
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoneyExchange object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoneyExchange"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "List exchange not found"
+                    }
+                }
+            }
+        },
+        "/money/exchange": {
+            "post": {
+                "tags": [
+                    "VirtualMoneyExchange"
+                ],
+                "summary": "Store a Virtual Money Exchange",
+                "description": "Création d'une transaction sur un compte virtuel",
+                "operationId": "7645614b261e64e0f754294ae0c653a1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ExchangeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "return VirtualMoneyExchange object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualMoneyExchange"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Exchange not store"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CompanyStoreRequest": {
+                "title": "CompanyStoreRequest",
+                "description": "Company request body data",
+                "required": [
+                    "name",
+                    "status_id"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of company",
+                        "type": "string",
+                        "example": "Welch Fargo Company"
+                    },
+                    "siret": {
+                        "title": "siret",
+                        "description": "siret'number's company",
+                        "type": "integer",
+                        "example": "29836108"
+                    },
+                    "vat_number": {
+                        "title": "vat_number",
+                        "description": "vat_number's company, for invoices",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "vat_applicable": {
+                        "title": "vat_applicable",
+                        "description": "vat_number's company, for invoices",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "activity": {
+                        "title": "activity",
+                        "description": "activity's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "34"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "address' company",
+                        "type": "string",
+                        "example": "23, rue de la liberté"
+                    },
+                    "zip": {
+                        "title": "zip",
+                        "description": "zip of city",
+                        "type": "integer",
+                        "example": "49100"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "city's address of company",
+                        "type": "string",
+                        "example": "Angers"
+                    },
+                    "social_network": {
+                        "title": "social_network",
+                        "description": "social_network's company",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status_id of company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of user referent for this company, if it's already known",
+                        "type": "integer",
+                        "example": "99"
+                    },
+                    "firstname": {
+                        "title": "firstname",
+                        "description": "firstname of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "Amélie"
+                    },
+                    "lastname": {
+                        "title": "lastname",
+                        "description": "lastname of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "Poulain"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "brocolidu49@outlook.ru"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role of user referent for this company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "CompanyUpdateRequest": {
+                "title": "CompanyUpdateRequest",
+                "description": "Company update request body data",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of company",
+                        "type": "string",
+                        "example": "Welch Fargo Company"
+                    },
+                    "siret": {
+                        "title": "siret",
+                        "description": "siret'number's company",
+                        "type": "integer",
+                        "example": "29836108"
+                    },
+                    "vat_number": {
+                        "title": "vat_number",
+                        "description": "vat_number's company, for invoices",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "vat_applicable": {
+                        "title": "vat_applicable",
+                        "description": "vat_number's company, for invoices",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "activity": {
+                        "title": "activity",
+                        "description": "activity's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "34"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "address' company",
+                        "type": "string",
+                        "example": "23, rue de la liberté"
+                    },
+                    "zip": {
+                        "title": "zip",
+                        "description": "zip of city",
+                        "type": "integer",
+                        "example": "49100"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "city's address of company",
+                        "type": "string",
+                        "example": "Angers"
+                    },
+                    "social_network": {
+                        "title": "social_network",
+                        "description": "social_network's company",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status_id, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of user referent for this company, if it's already known",
+                        "type": "integer",
+                        "example": "99"
+                    },
+                    "firstname": {
+                        "title": "firstname",
+                        "description": "firstname of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "Amélie"
+                    },
+                    "lastname": {
+                        "title": "lastname",
+                        "description": "lastname of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "Poulain"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of user referent for this company, if it's a new user",
+                        "type": "string",
+                        "example": "brocolidu49@outlook.ru"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role of user referent for this company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "DetailStoreRequest": {
+                "title": "DetailStoreRequest",
+                "description": "Invoice detail request body data",
+                "required": [
+                    "invoice_id",
+                    "service_id",
+                    "quantity",
+                    "excl_tax_price",
+                    "tax_id",
+                    "tax_percent",
+                    "incl_tax_price"
+                ],
+                "properties": {
+                    "invoice_id": {
+                        "title": "invoice_id",
+                        "description": "invoice's id which this detail is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object"
+            },
+            "DetailUpdateRequest": {
+                "title": "DetailUpdateRequest",
+                "description": "Invoice detail update request body data",
+                "properties": {
+                    "invoice_id": {
+                        "title": "invoice_id",
+                        "description": "invoice's id which this detail is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object"
+            },
+            "InvoiceStoreRequest": {
+                "title": "InvoiceStoreRequest",
+                "description": "Invoice request body data",
+                "required": [
+                    "date",
+                    "status_id"
+                ],
+                "properties": {
+                    "date": {
+                        "title": "date",
+                        "description": "invoice's date",
+                        "type": "string",
+                        "example": "23/01/1992"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "invoice's status",
+                        "type": "integer",
+                        "example": "99"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "info for this invoice",
+                        "type": "string",
+                        "example": "Plein de trucs"
+                    }
+                },
+                "type": "object"
+            },
+            "InvoiceUpdateRequest": {
+                "title": "InvoiceUpdateRequest",
+                "description": "Invoice update request body data",
+                "properties": {
+                    "date": {
+                        "title": "date",
+                        "description": "invoice's date",
+                        "type": "string",
+                        "example": "23/01/1992"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "invoice's status",
+                        "type": "integer",
+                        "example": "99"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "info for this invoice",
+                        "type": "string",
+                        "example": "Plein de trucs"
+                    }
+                },
+                "type": "object"
+            },
+            "PaymentStoreRequest": {
+                "title": "PaymentStoreRequest",
+                "description": "Invoice detail request body data",
+                "required": [
+                    "invoice_id",
+                    "amount",
+                    "payment_code"
+                ],
+                "properties": {
+                    "invoice_id": {
+                        "title": "invoice_id",
+                        "description": "invoice's id which this payment is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this payment",
+                        "type": "number",
+                        "example": "8.54"
+                    },
+                    "payment_code": {
+                        "title": "payment_code",
+                        "description": "code payment, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "informations for this payment",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    }
+                },
+                "type": "object"
+            },
+            "PaymentUpdateRequest": {
+                "title": "PaymentUpdateRequest",
+                "description": "Invoice payment request body data",
+                "required": [
+                    "invoice_id",
+                    "amount",
+                    "payment_code"
+                ],
+                "properties": {
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this payment",
+                        "type": "number",
+                        "example": "8.54"
+                    },
+                    "payment_code": {
+                        "title": "payment_code",
+                        "description": "code payment, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "informations for this payment",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    }
+                },
+                "type": "object"
+            },
+            "QuoteDetailStoreRequest": {
+                "title": "QuoteDetailStoreRequest",
+                "description": "Quote detail request body data",
+                "required": [
+                    "invoice_id",
+                    "service_id",
+                    "quantity",
+                    "excl_tax_price",
+                    "tax_id",
+                    "tax_percent",
+                    "incl_tax_price"
+                ],
+                "properties": {
+                    "quote_id": {
+                        "title": "quote_id",
+                        "description": "quote's id which this detail is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object"
+            },
+            "QuoteDetailUpdateRequest": {
+                "title": "QuoteDetailUpdateRequest",
+                "description": "Quote detail update request body data",
+                "properties": {
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object"
+            },
+            "QuoteStoreRequest": {
+                "title": "QuoteStoreRequest",
+                "description": "Quote request body data",
+                "required": [
+                    "date",
+                    "status_id"
+                ],
+                "properties": {
+                    "date": {
+                        "title": "date",
+                        "description": "invoice's date",
+                        "type": "string",
+                        "example": "23/01/1992"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "invoice's status",
+                        "type": "integer",
+                        "example": "99"
+                    },
+                    "info": {
+                        "title": "status_id",
+                        "description": "invoice's status",
+                        "type": "integer",
+                        "example": "99"
+                    }
+                },
+                "type": "object"
+            },
+            "QuoteUpdateRequest": {
+                "title": "QuoteUpdateRequest",
+                "description": "Quote update request body data",
+                "properties": {
+                    "date": {
+                        "title": "date",
+                        "description": "quote's date",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company to which the quote is sent",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user to which the quote is sent",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of the quote, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "info for this quote",
+                        "type": "string",
+                        "example": "Plein de trucs"
+                    }
+                },
+                "type": "object"
+            },
+            "UserStoreRequest": {
+                "title": "UserStoreRequest",
+                "description": "User request body data",
+                "required": [
+                    "firstname",
+                    "lastname",
+                    "email",
+                    "civility",
+                    "status_id",
+                    "particulier"
+                ],
+                "properties": {
+                    "firstname": {
+                        "title": "firstname",
+                        "description": "firstname of user",
+                        "type": "string",
+                        "example": "Benjamin"
+                    },
+                    "lastname": {
+                        "title": "lastname",
+                        "description": "lastname of user",
+                        "type": "string",
+                        "example": "Franklin"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of user",
+                        "type": "string",
+                        "example": "BenjaminFranklin@electricity.us"
+                    },
+                    "civility": {
+                        "title": "civility",
+                        "description": "civility of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "birthdate": {
+                        "title": "birthdate",
+                        "description": "birthday of user",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "phone of user",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    },
+                    "particulier": {
+                        "title": "particulier",
+                        "description": "particulier or in company",
+                        "type": "boolean",
+                        "example": "0"
+                    },
+                    "is_admin": {
+                        "title": "is_admin",
+                        "description": "admin or not",
+                        "type": "integer",
+                        "example": "0"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of company attached at this user, if it's already known",
+                        "type": "integer",
+                        "example": "9"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role of this user in his company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "Welch Fargo Company"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "address' company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "23, rue de la liberté"
+                    },
+                    "zip": {
+                        "title": "zip",
+                        "description": "zip of city attached to this user, if it's a new company",
+                        "type": "integer",
+                        "example": "49100"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "city's address of company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "Angers"
+                    }
+                },
+                "type": "object"
+            },
+            "UserUpdateRequest": {
+                "title": "UserUpdateRequest",
+                "description": "User update request body data",
+                "properties": {
+                    "firstname": {
+                        "title": "firstname",
+                        "description": "firstname of user",
+                        "type": "string",
+                        "example": "Benjamin"
+                    },
+                    "lastname": {
+                        "title": "lastname",
+                        "description": "lastname of user",
+                        "type": "string",
+                        "example": "Franklin"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of user",
+                        "type": "string",
+                        "example": "BenjaminFranklin@electricity.us"
+                    },
+                    "civility": {
+                        "title": "civility",
+                        "description": "civility of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "birthdate": {
+                        "title": "birthdate",
+                        "description": "birthday of user",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "phone of user",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    },
+                    "is_admin": {
+                        "title": "is_admin",
+                        "description": "admin or not",
+                        "type": "integer",
+                        "example": "0"
+                    },
+                    "particulier": {
+                        "title": "particulier",
+                        "description": "particulier or in company",
+                        "type": "boolean",
+                        "example": "0"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of company attached at this user, if it's already known",
+                        "type": "integer",
+                        "example": "9"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role of this user in his company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "Welch Fargo Company"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "address' company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "23, rue de la liberté"
+                    },
+                    "zip": {
+                        "title": "zip",
+                        "description": "zip of city attached to this user, if it's a new company",
+                        "type": "integer",
+                        "example": "49100"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "city's address of company attached to this user, if it's a new company",
+                        "type": "string",
+                        "example": "Angers"
+                    }
+                },
+                "type": "object"
+            },
+            "CountRequest": {
+                "title": "CountRequest",
+                "description": "Store Account Virtual Money request body data",
+                "required": [
+                    "type",
+                    "type_id"
+                ],
+                "properties": {
+                    "type": {
+                        "title": "type",
+                        "description": "1 = company, 2 = user",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "reference_id": {
+                        "title": "reference_id",
+                        "description": "id of user or company",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "ExchangeRequest": {
+                "title": "ExchangeRequest",
+                "description": "Store Exchange Virtual Money request body data",
+                "required": [
+                    "virtual_money_id",
+                    "amount"
+                ],
+                "properties": {
+                    "virtual_money_id": {
+                        "title": "virtual_money_id",
+                        "description": "id of virtual money account",
+                        "type": "integer",
+                        "example": "87"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this exchange",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of this exchange, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "informations about this exchange",
+                        "type": "string",
+                        "example": "C'est pour acheter des frites"
+                    }
+                },
+                "type": "object"
+            },
+            "Company": {
+                "title": "Company",
+                "description": "Company model",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "name of company",
+                        "type": "string",
+                        "example": "Welch Fargo Companie"
+                    },
+                    "siret": {
+                        "title": "siret",
+                        "description": "siret'number's company",
+                        "type": "integer",
+                        "example": "29836108"
+                    },
+                    "vat_number": {
+                        "title": "vat_number",
+                        "description": "vat_number's company",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "vat_applicable": {
+                        "title": "vat_applicable",
+                        "description": "vat_number's company",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "activity": {
+                        "title": "activity",
+                        "description": "activity's company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "34"
+                    },
+                    "address": {
+                        "title": "address",
+                        "description": "address' company",
+                        "type": "string",
+                        "example": "23, rue de la liberté"
+                    },
+                    "zip": {
+                        "title": "zip",
+                        "description": "zip of city",
+                        "type": "integer",
+                        "example": "49100"
+                    },
+                    "city": {
+                        "title": "city",
+                        "description": "city's address of company",
+                        "type": "string",
+                        "example": "Angers"
+                    },
+                    "social_network": {
+                        "title": "social_network",
+                        "description": "social_network's company",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status_id, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Company"
+                }
+            },
+            "CompanyHasUser": {
+                "title": "CompanyHasUser",
+                "description": "Liaison entre les compagnies et les utilisateurs",
+                "properties": {
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of company",
+                        "type": "integer",
+                        "example": "3"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of user",
+                        "type": "integer",
+                        "example": "987"
+                    },
+                    "role": {
+                        "title": "role",
+                        "description": "role of user in this company, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CompanyHasUser"
+                }
+            },
+            "Invoice": {
+                "title": "Invoice",
+                "description": "Invoice model",
+                "properties": {
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user to which the invoice is sent",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company to which the invoice is sent",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "number": {
+                        "title": "number",
+                        "description": "invoice's number",
+                        "type": "integer",
+                        "example": "1986"
+                    },
+                    "date": {
+                        "title": "date",
+                        "description": "invoice's date",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "excl_tax_total": {
+                        "title": "excl_tax_total",
+                        "description": "price free tax",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "taxes_total": {
+                        "title": "taxes_total",
+                        "description": "amount tax",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_total": {
+                        "title": "incl_tax_total",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    },
+                    "already_paid": {
+                        "title": "already_paid",
+                        "description": "Amount already paid for this invoice",
+                        "type": "number",
+                        "example": "403.75"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of the invoice",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "info for this invoice",
+                        "type": "string",
+                        "example": "Plein de trucs"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Invoice"
+                }
+            },
+            "InvoiceDetail": {
+                "title": "InvoiceDetail",
+                "description": "Invoice detail model",
+                "properties": {
+                    "invoice_id": {
+                        "title": "invoice_id",
+                        "description": "invoice's id which this detail is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InvoiceDetail"
+                }
+            },
+            "InvoicePayment": {
+                "title": "InvoicePayment",
+                "description": "Invoice payment model",
+                "properties": {
+                    "invoice_id": {
+                        "title": "invoice_id",
+                        "description": "invoice's id which this payment is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this payment",
+                        "type": "number",
+                        "example": "8.54"
+                    },
+                    "payment_code": {
+                        "title": "payment_code",
+                        "description": "code payment, refer to customfield's db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "informations for this payment",
+                        "type": "string",
+                        "example": "je sais pas trop"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "InvoicePayment"
+                }
+            },
+            "LogAccounting": {
+                "title": "LogAccounting",
+                "description": "LogAccounting model",
+                "properties": {
+                    "type": {
+                        "title": "type",
+                        "description": "invoice or quote : 1 pour quote, 2 pour invoice",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "action": {
+                        "title": "action",
+                        "description": "action of log, voir AccountingLibs",
+                        "type": "integer",
+                        "example": "22"
+                    },
+                    "reference_id": {
+                        "title": "reference_id",
+                        "description": "reference_id of invoice or quote",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "reference_number": {
+                        "title": "reference_number",
+                        "description": "reference_number of invoice or quote",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "author_id": {
+                        "title": "author_id",
+                        "description": "author_id of this log, refer to ??? db",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "id du détail ou du paiement concerné",
+                        "type": "integer",
+                        "example": "18"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "LogAccounting"
+                }
+            },
+            "Quote": {
+                "title": "Quote",
+                "description": "Quote model",
+                "properties": {
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "id of the user to which the quote is sent",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "company_id": {
+                        "title": "company_id",
+                        "description": "id of the company to which the quote is sent",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "number": {
+                        "title": "number",
+                        "description": "quote's number",
+                        "type": "integer",
+                        "example": "1986"
+                    },
+                    "date": {
+                        "title": "date",
+                        "description": "quote's date",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "excl_tax_total": {
+                        "title": "excl_tax_total",
+                        "description": "price free tax",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "taxes_total": {
+                        "title": "taxes_total",
+                        "description": "amount tax",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_total": {
+                        "title": "incl_tax_total",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of the quote, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "info for this quote",
+                        "type": "string",
+                        "example": "Plein de trucs"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Quote"
+                }
+            },
+            "QuoteDetail": {
+                "title": "QuoteDetail",
+                "description": "QuoteDetail model",
+                "properties": {
+                    "quote_id": {
+                        "title": "quote_id",
+                        "description": "quote's id which this detail is attached",
+                        "type": "integer",
+                        "example": "4"
+                    },
+                    "service_id": {
+                        "title": "service_id",
+                        "description": "id service for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "quantity": {
+                        "title": "quantity",
+                        "description": "quantity of this service",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "excl_tax_price": {
+                        "title": "excl_tax_price",
+                        "description": "free tax price",
+                        "type": "number",
+                        "example": "65.3"
+                    },
+                    "tax_id": {
+                        "title": "tax_id",
+                        "description": "tax id for this detail, refer to customfield's db",
+                        "type": "integer",
+                        "example": "10"
+                    },
+                    "tax_percent": {
+                        "title": "tax_percent",
+                        "description": "tax percent for this detail",
+                        "type": "number",
+                        "example": "102.34"
+                    },
+                    "incl_tax_price": {
+                        "title": "incl_tax_price",
+                        "description": "price with tax",
+                        "type": "number",
+                        "example": "102.37"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "QuoteDetail"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "firstname": {
+                        "title": "firstname",
+                        "description": "firstname of user",
+                        "type": "string",
+                        "example": "Benjamin"
+                    },
+                    "lastname": {
+                        "title": "lastname",
+                        "description": "lastname of user",
+                        "type": "string",
+                        "example": "Franklin"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of user",
+                        "type": "string",
+                        "example": "BenjaminFranklin@electricity.us"
+                    },
+                    "civility": {
+                        "title": "civility",
+                        "description": "civility of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "birthday": {
+                        "title": "birthday",
+                        "description": "birthday of user",
+                        "type": "string",
+                        "example": "21/12/2010"
+                    },
+                    "phone": {
+                        "title": "phone",
+                        "description": "phone of user",
+                        "type": "integer",
+                        "example": "123456789"
+                    },
+                    "status_id": {
+                        "title": "status_id",
+                        "description": "status of user, refer to customfield's db",
+                        "type": "integer",
+                        "example": "7"
+                    },
+                    "is_admin": {
+                        "title": "is_admin",
+                        "description": "admin or not",
+                        "type": "integer",
+                        "example": "0"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "VirtualMoney": {
+                "title": "VirtualMoney",
+                "description": "VirtualMoney model",
+                "properties": {
+                    "type": {
+                        "title": "type",
+                        "description": "1 = company, 2 = user",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this exchange",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "reference_id": {
+                        "title": "reference_id",
+                        "description": "id of user or company",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VirtualMoney"
+                }
+            },
+            "VirtualMoneyExchange": {
+                "title": "VirtualMoneyExchange",
+                "description": "VirtualMoneyExchange model",
+                "properties": {
+                    "virtual_money_id": {
+                        "title": "virtual_money_id",
+                        "description": "id of virtual money account",
+                        "type": "integer",
+                        "example": "87"
+                    },
+                    "amount": {
+                        "title": "amount",
+                        "description": "amount of this exchange",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of this exchange, refer to customfield's db",
+                        "type": "integer",
+                        "example": "8"
+                    },
+                    "info": {
+                        "title": "info",
+                        "description": "informations about this exchange",
+                        "type": "string",
+                        "example": "C'est pour acheter des frites"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "VirtualMoneyExchange"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "ms-crm",
+            "description": "API Endpoints of ms-CRM"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
